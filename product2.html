@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product 1 - Details</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at center, #1c1c1c 0%, #0d0d0d 100%);
+      color: #f0f0f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Emoji floating animation */
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 20s linear infinite;
+      opacity: 0.3;
+      pointer-events: none;
+      user-select: none;
+      will-change: transform;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+      }
+      100% {
+        transform: translateY(-100vh) translateX(50px);
+      }
+    }
+
+    /* Header */
+    header {
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+    }
+
+    /* Product details container */
+    .product-details {
+      display: flex;
+      justify-content: center;
+      margin: 40px 20px;
+      gap: 30px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Image gallery */
+    .image-gallery {
+      flex: 1 1 300px;
+      max-width: 500px;
+    }
+
+    .main-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(255 255 255 / 0.1);
+    }
+
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .thumbnail-container img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 0 8px rgba(255 255 255 / 0.1);
+    }
+
+    .thumbnail-container img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 12px #ff5a5f;
+    }
+
+    /* Product info */
+    .product-info {
+      flex: 1 1 300px;
+      max-width: 500px;
+      min-width: 280px;
+    }
+
+    .product-info h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .product-info p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .product-info .price {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #ff5a5f;
+      margin-bottom: 20px;
+    }
+
+    /* Buy Now button */
+    .buy-now {
+      background-color: #ff5a5f;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.3em;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-now:hover {
+      background-color: #e04c4b;
+    }
+
+    /* Footer */
+    footer {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .product-details {
+        margin: 30px 10px;
+      }
+
+      .thumbnail-container img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .buy-now {
+        font-size: 1.1em;
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+
+      .product-details {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 5px 80px;
+      }
+
+      .image-gallery, .product-info {
+        max-width: 100%;
+        flex: none;
+      }
+
+      .thumbnail-container img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .buy-now {
+        width: 100%;
+        font-size: 1em;
+        padding: 12px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Re-add emoji floating animation (same as original index)
+  const emojis = ['😂', '🔥', '✨', '😎', '💻', '🚀', '🎮', '👾'];
+  for (let i = 0; i < 30; i++) {
+    const emoji = document.createElement('div');
+    emoji.classList.add('emoji');
+    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * 100 + 'vw';
+    emoji.style.top = Math.random() * 100 + 'vh';
+    emoji.style.fontSize = (Math.random() * 3 + 1) + 'rem';
+    emoji.style.animationDuration = (Math.random() * 20 + 10) + 's';
+    document.body.appendChild(emoji);
+  }
+</script>
+
+<header>
+  <h1>Bandai Original SHFiguarts</h1>
+</header>
+
+<div class="product-details">
+  <!-- Image Gallery -->
+  <div class="image-gallery">
+    <img id="mainImage" src="try.webp" alt="Product Main" class="main-image" />
+
+    <div class="thumbnail-container">
+      <img src="try2.webp" onclick="changeImage(this.src)" alt="Thumbnail 1" />
+      <img src="try3.webp" onclick="changeImage(this.src)" alt="Thumbnail 2" />
+    </div>
+  </div>
+
+  <!-- Product Info -->
+  <div class="product-info">
+    <h2>Bandai Original SHFiguarts</h2>
+    <p>Bandai Original SHFiguarts SHF Jujutsu Kaisen Todo Aoi Satoru Gojo Itadori Yuji Fushiguro Megumi Ryomen Sukuna Anime De Juguete</p>
+    <p class="price">$41.38</p>
+    <a href="https://s.click.aliexpress.com/e/_oBM54gQ" target="_blank" class="buy-now">Buy Now</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Best Offers - All Rights Reserved</p>
+</footer>
+
+<script>
+  function changeImage(src) {
+    document.getElementById("mainImage").src = src;
+  }
+</script>
+
+</body>
+</html>
